@@ -37,13 +37,24 @@ public class BrainPlayer : Brain
 
     public void AttackWithPlayerInput()
     {
-        float fire1 = Input.GetAxis("Fire1");
-        float fire2 = Input.GetAxis("Fire2");
-        float fire3 = Input.GetAxis("Fire3");
+        bool fire1 = ControlScheme.GetKey(ControlScheme.Keys.Fire1);
+        bool fire2 = ControlScheme.GetKey(ControlScheme.Keys.Fire2);
+        bool fire3 = ControlScheme.GetKey(ControlScheme.Keys.Fire3);
 
-        if (fire1 > 0)
+        if (fire1)
         {
             Character.Locomotor.Attack();
+            Debug.Log("Attack 1");
+        }
+        else if (fire2)
+        {
+            Character.Locomotor.Attack();
+            Debug.Log("Attack 2");
+        }
+        else if (fire3)
+        {
+            Character.Locomotor.Attack();
+            Debug.Log("Attack 3");
         }
     }
 }

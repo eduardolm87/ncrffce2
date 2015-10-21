@@ -62,12 +62,12 @@ public class GameManager : MonoBehaviour
 
         Character newCharacter = playerInstance.GetComponent<Character>();
 
-
-
         int newID = PlayerCharacters.Count;
 
         newCharacter.playerID = newID;
+
         newCharacter.Status = Character.Statuses.DISABLED;
+
         (newCharacter.Brain as BrainPlayer).ControlScheme = zControlScheme;
 
         PlayerCharacters.Add(newCharacter);
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f);
 
-        SpawnPlayer(Vector3.zero, GetControlScheme("Keyboard Left")); //todo: set here the chosen control scheme
+        SpawnPlayer(Vector3.zero, GetControlScheme("Joystick 2")); //todo: set here the chosen control scheme
     }
 
     ControlScheme GetControlScheme(string zName)

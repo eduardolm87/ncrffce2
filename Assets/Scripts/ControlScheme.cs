@@ -5,9 +5,9 @@ public class ControlScheme : MonoBehaviour
 {
     public string Name = "Keyboard Right";
 
-    public KeyCode Fire1 = KeyCode.I;
-    public KeyCode Fire2 = KeyCode.O;
-    public KeyCode Fire3 = KeyCode.P;
+    public string Fire1 = "Fire1_KeyboardR";
+    public string Fire2 = "Fire2_KeyboardR";
+    public string Fire3 = "Fire3_KeyboardR";
 
     public string VerticalAxis = "Vertical";
     public string HorizontalAxis = "Horizontal";
@@ -34,32 +34,69 @@ public class ControlScheme : MonoBehaviour
         switch (zKey)
         {
             case Keys.Fire1:
-                return Input.GetKey(Fire1);
+                return Input.GetAxis(Fire1) > 0;
 
             case Keys.Fire2:
-                return Input.GetKey(Fire2);
+                return Input.GetAxis(Fire2) > 0;
 
             case Keys.Fire3:
-                return Input.GetKey(Fire3);
+                return Input.GetAxis(Fire3) > 0;
         }
 
         return false;
     }
 
+
+
+    bool Fire1Down = false;
+    bool Fire2Down = false;
+    bool Fire3Down = false;
     public bool GetKeyDown(Keys zKey)
     {
         switch (zKey)
         {
             case Keys.Fire1:
-                return Input.GetKeyDown(Fire1);
+
+                if (Fire1Down) return false;
+                else if (Input.GetAxis(Fire1) > 0)
+                {
+                    Fire1Down = true;
+                    return true;
+                }
+
+                break;
 
             case Keys.Fire2:
-                return Input.GetKeyDown(Fire2);
+
+                if (Fire2Down) return false;
+                else if (Input.GetAxis(Fire2) > 0)
+                {
+                    Fire2Down = true;
+                    return true;
+                }
+
+                break;
 
             case Keys.Fire3:
-                return Input.GetKeyDown(Fire3);
+
+                if (Fire3Down) return false;
+                else if (Input.GetAxis(Fire3) > 0)
+                {
+                    Fire3Down = true;
+                    return true;
+                }
+
+                break;
         }
 
         return false;
+    }
+
+
+    void LateUpdate()
+    {
+        if (Fire1Down && Input.GetAxis(Fire1) <= 0) { Fire1Down = false; }
+        if (Fire2Down && Input.GetAxis(Fire2) <= 0) { Fire2Down = false; }
+        if (Fire3Down && Input.GetAxis(Fire3) <= 0) { Fire3Down = false; }
     }
 }
