@@ -3,13 +3,23 @@ using System.Collections;
 
 public class TitleScreen : MonoBehaviour
 {
-    void Update()
+    [SerializeField]
+    CharacterSelectionScreen CharacterSelectionScreen;
+
+    public void PressStart()
     {
-        if (Input.GetAxis("Fire1") > 0)
-        {
-            GameManager.Instance.StartGame();
-        }
+        CharacterSelectionScreen.Open();
+        Close();
     }
 
-    
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

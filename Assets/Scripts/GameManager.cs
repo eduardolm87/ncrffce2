@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         SpawnPlayer(Vector3.zero, GetControlScheme("Joystick 2")); //todo: set here the chosen control scheme
     }
 
-    ControlScheme GetControlScheme(string zName)
+    public ControlScheme GetControlScheme(string zName)
     {
         return ControlSchemes.FirstOrDefault(c => c.Name == zName);
     }

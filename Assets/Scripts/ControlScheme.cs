@@ -4,6 +4,7 @@ using System.Collections;
 public class ControlScheme : MonoBehaviour
 {
     public string Name = "Keyboard Right";
+    public Sprite Icon = null;
 
     public string Fire1 = "Fire1_KeyboardR";
     public string Fire2 = "Fire2_KeyboardR";
